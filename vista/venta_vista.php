@@ -15,7 +15,7 @@
     </div>
 
     <div class="contenido">
-        <h1>Listado de Ventas</h1>
+        <h1>Listado de Ventas  </h1>
     
     <hr>
 

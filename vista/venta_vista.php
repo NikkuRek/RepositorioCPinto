@@ -16,7 +16,7 @@
 
     <div class="contenido">
         <h1>Listado de Ventas</h1>
-
+    
     <hr>
 
     <div class="px-6 py-4">

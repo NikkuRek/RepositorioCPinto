@@ -6,16 +6,19 @@ const cerrar_modal = document.querySelectorAll('.finalizar');
 const abrir_modal_modificar = document.querySelector('.modal_abrir_modificar');
 const abrir_modal_agregar = document.querySelector('.modal_abrir_agregar');
 
-abrir_modal_modificar.addEventListener('click', (e) => {
-  e.preventDefault();
-  modal_abrir_modificar.classList.add('modal--show');
-});
-
-abrir_modal_agregar.addEventListener('click', (e) => {
-  e.preventDefault();
-  modal_abrir_agregar.classList.add('modal--show');
-});
-
+if( abrir_modal_modificar ){
+    abrir_modal_modificar.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal_abrir_modificar.classList.add('modal--show');
+    });
+}
+if( abrir_modal_modificar ){
+    abrir_modal_agregar.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal_abrir_agregar.classList.add('modal--show');
+    });
+}
+ 
 
 //abrir modal cliente
 //abrir_modal.addEventListener('click', (e)=>{

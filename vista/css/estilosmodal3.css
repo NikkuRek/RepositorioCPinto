@@ -1,0 +1,15 @@
+.top{
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,.8);
+    display: grid;
+    place-items: center;
+    transition: .4s;
+  }
+  .close{
+    top: 5em;
+    left: 70%;
+  }
+  .translate{
+    transform: translateY(-100%);
+  }

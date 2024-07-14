@@ -66,7 +66,7 @@
 	}
 	// Click > Botón Modificar
 	if (isset($_POST['modificar'])){
-		$objventa->set_idventa($_POST['id_venta_input']);
+		$objventa->set_idventa($_POST['id_venta']);
 		$objventa->set_documentocliente($_POST['documentocliente']);
 		$objventa->set_cantidadprendas($_POST['cantidadprendas']);
 		$objventa->set_idpedidoU($_POST['idpedidoU']);

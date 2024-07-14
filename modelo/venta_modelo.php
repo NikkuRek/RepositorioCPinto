@@ -135,7 +135,7 @@
 				
 			return $encontro;
 		} 
-		 
+		  
 		public function modificar(){ 
 			$registro= "UPDATE venta SET documento_cliente='".$this->documentocliente."', cantidad_prendas='".$this->cantidadprendas."', id_pedidoU='".$this->idpedidoU."', precio_unitario='".$this->preciounitario."', descripcion='".$this->descrip."', descuento='".$this->descuen."', fecha_venta='".$this->fechaventa."' WHERE id_venta='".$this->idventa."'";  
 			$preparado = $this->objbd->prepare($registro);

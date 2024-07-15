@@ -10,6 +10,7 @@
         private $fechai;
         private $fechaf;
         private $obserpu;
+        private $objbd;
 
         public function __construct(){
 			parent::__construct();

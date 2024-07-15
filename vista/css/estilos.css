@@ -434,3 +434,103 @@ body {
   grid-template-columns: 300px 300px 300px ;
   }
 
+
+
+  .vista-tablon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/tablon.png"); 
+    background-size: cover;
+    width: 250px; height: 350px;
+    font-weight: bolder;
+  }
+  
+  .vista-tablon .btn {
+    width: 100%;
+  }
+  
+  
+  .vista-tablon .texto-superior {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500; /* Poppins Bold */
+    line-height: 1.0; /* Interlineado */
+    margin-top: 10%;
+  }
+  
+  .vista-tablon .texto-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .vista-tablon .texto-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0;
+  }
+  
+    
+  /*Pop-up  */
+  
+  #btn-add{display: none;}
+  
+  .Check{
+      position: absolute;
+      top: -50%;
+  }
+  .back{
+      position: absolute;
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+  }
+  
+  .container-add{
+    position: absolute;
+    background-image: url("../img/fondoventana.png"); 
+    background-repeat: no-repeat;
+      background-size: cover;
+    width: 70%; height: 80%;
+    top: 10%; left: 15%;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+      border-radius: 30px;
+  }
+  
+  #btn-add:checked ~ .back{
+    display: block;
+  }
+  
+  #btn-add:checked ~ .container-add{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .cont-add{  
+    color: black;
+    padding-left: 100px;
+      background-color: rgba(0, 0, 0, 0);
+    width: 80%; height: 80%;
+    position: relative;
+      top: 25%;
+    transition: all 50ms ease;
+  }
+  
+  #btn-add:checked ~ .container-add .cont-add{
+    transform: translateX(0%);
+    transition: all 500ms ease;
+  }
+  
+  /*Fin de Pop-Upl*/
+  
+  

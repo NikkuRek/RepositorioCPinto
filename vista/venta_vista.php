@@ -120,7 +120,7 @@
                                 <input type="button" value="Limpiar" onclick="Limpiar();" class="btn btn-info">
                                 <?php } else { ?>
                                 <input type="submit" value="Modificar" name="modificar" class="btn btn-info">
-                                <?php } ?>
+                                <?php } ?> 
                                 <input type="submit" value="Volver" Name ="Volver" class="btn btn-danger">
                             </center>
                         </div>

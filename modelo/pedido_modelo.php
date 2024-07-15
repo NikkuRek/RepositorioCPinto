@@ -157,8 +157,8 @@
         
         public function DatosCombinados(){
             
-        $sql = "SELECT e.*, p.nombrepedidou_prod, p.fechafcion, p.preciopu, 'entrada' as tipo, e.fecha_entrada as fecha_ordenada FROM entrada e JOIN producto p ON e.id_producto = p.id_producto";
-        $sql2 = "SELECT s.*, p.nombrepedidou_prod, p.fechafcion, p.preciopu, 'salida' as tipo, s.fecha_salida as fecha_ordenada FROM salida s JOIN producto p ON s.id_producto = p.id_producto";
+        $sql = "SELECT e.*, p.nombrepedidou_prod, p.fechaf, p.preciopu, 'entrada' as tipo, e.fecha_entrada as fecha_ordenada FROM entrada e JOIN producto p ON e.id_producto = p.id_producto";
+        $sql2 = "SELECT s.*, p.nombrepedidou_prod, p.fechaf, p.preciopu, 'salida' as tipo, s.fecha_salida as fecha_ordenada FROM salida s JOIN producto p ON s.id_producto = p.id_producto";
 
         // Ejecutar la consulta y obtener los resultados en un array asociativo
         $resultados = $this->objbd->prepare($sql);

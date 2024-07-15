@@ -38,7 +38,7 @@
 
            
 
-           <a href="#" class="btn btn-blanco">
+           <a href="#" class="f2">
                 <!--<img src="../vista/img/tablon.png" alt="Agregar Salida">-->
                     <div class="texto-contenedor">
                       <span class="texto-superior">Pedido: <?php echo $pedidou['id_pedidoU']; ?></span>

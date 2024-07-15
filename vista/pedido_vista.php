@@ -30,7 +30,7 @@
 
 
     <div class="px-6 py-4">
-                <div class="contenedor-entrada1 px-6 pt-5">
+                <div ip= "f1" class="contenedor-entrada1 px-6 pt-5">
 
 
             <?php foreach ($lista_pedidou as $pedidou){ ?>
@@ -38,7 +38,7 @@
 
            
 
-           <a href="#" class="f2">
+           <a href="#" class=" btn-blanco">
                 <!--<img src="../vista/img/tablon.png" alt="Agregar Salida">-->
                     <div class="texto-contenedor">
                       <span class="texto-superior">Pedido: <?php echo $pedidou['id_pedidoU']; ?></span>

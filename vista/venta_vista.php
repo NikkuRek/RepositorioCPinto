@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <section class="modal_section <?php if(isset($_GET['id'])){ ?>modal--show<?php } ?>" id = "modal_abrir_modificar">
+    <section class="modal_section <?php if(isset($_GET['id'])){ ?>modal--show<?php } ?>" id = "modal_abrir_modificar">
                 <div class="modal__contenedor">
     <hr>
 

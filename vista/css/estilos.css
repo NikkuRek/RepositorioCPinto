@@ -434,6 +434,9 @@ body {
   grid-template-columns: 300px 300px 300px ;
   }
 
+  .cont-tablon{
+    display: flex;
+  }
 
 
   .vista-tablon{
@@ -479,8 +482,15 @@ body {
   
     
   /*Pop-up  */
-  
-  #btn-add{display: none;}
+
+  .add2,
+  .add3{
+    margin-top: 10px;
+  }
+
+  #btn-add,
+  #btn-add2,
+  #btn-add3{display: none;}
   
   .Check{
       position: absolute;
@@ -496,38 +506,78 @@ body {
   
   .container-add{
     position: absolute;
+    display: flex;
+    justify-items: center;
     background-image: url("../img/fondoventana.png"); 
     background-repeat: no-repeat;
       background-size: cover;
-    width: 70%; height: 80%;
-    top: 10%; left: 15%;
+    width: 1200px; height: 600px;
+    top: 200px; left: 220px;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+      border-radius: 30px;
+  }
+
+  .container-add2,
+  .container-add3{
+    position: absolute;
+    display: flex;
+    justify-items: center;
+    background-image: url("../img/fondoventana.png"); 
+    background-repeat: no-repeat;
+      background-size: cover;
+    width: 1200px; height: 600px;
+    top: 100px; left: -150px;
     transition: all 500ms ease;
     opacity: 0;
     visibility: hidden;
       border-radius: 30px;
   }
   
-  #btn-add:checked ~ .back{
+  #btn-add:checked ~ .back,
+  #btn-add2:checked ~ .back2,
+  #btn-add3:checked ~ .back3
+  {
     display: block;
   }
   
-  #btn-add:checked ~ .container-add{
+  #btn-add:checked ~ .container-add,
+  #btn-add2:checked ~ .container-add2,
+  #btn-add3:checked ~ .container-add3{
     opacity: 1;
     visibility: visible;
   }
   
   .cont-add{  
     color: black;
-    padding-left: 100px;
       background-color: rgba(0, 0, 0, 0);
     width: 80%; height: 80%;
-    position: relative;
-      top: 25%;
+    margin: 150px;
     transition: all 50ms ease;
+  }
+
+  .cont-add2,
+  .cont-add3{  
+    position: absolute;
+    color: black;
+      background-color: rgba(0, 0, 0, 0);
+    margin: 200px;
   }
   
   #btn-add:checked ~ .container-add .cont-add{
-    transform: translateX(0%);
+    transform: translateY(0%);
+    transition: all 500ms ease;
+  }
+
+  #btn-add:checked ~ .container-add{
+    transform: translateY(-100px);
+    transition: all 500ms ease;
+  }
+  
+  #btn-add2:checked ~ .container-add2,
+  #btn-add3:checked ~ .container-add3{
+    transform: translateY(-41%);
     transition: all 500ms ease;
   }
   

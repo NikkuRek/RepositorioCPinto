@@ -87,7 +87,7 @@
                         <?php } ?>
                         <div class="col-md-12">
                             <label for=area>Cliente: </label>
-                            <input type="text" id="documentocliente" name="documentocliente" value="<?php echo $documentocliente; ?>" class="form-control form-control-sm">
+                            <input type="text" id="documentocliente" name="documentocliente" value="<?php echo $documentocliente; ?>" readonly class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
                             <label for=area>Cantidad: </label>
@@ -95,11 +95,13 @@
                         </div>
                         <div class="col-md-12">
                         <label for=area>N° Pedido: </label>
-                        <select id="idpedidoU" name="idpedidoU" class="form-control form-control-sm">
+                        <select id="idpedidoU" name="idpedidoU" class="form-control form-control-sm" onchange="rellenar()">
                                 <option value="0">-- Seleccione --</option>
                                 <?php foreach ($lista_venta as $venta){
                                     $seleccionado = ""; if( isset($_GET['id']) and $idpedidoU == $venta['id_pedidoU'] ) $seleccionado = "selected"; ?>
-                                    <option value="<?php echo $venta['id_pedidoU'] ?>" <?php echo $seleccionado ?>><?php echo $venta['id_pedidoU'], '-', $venta['nombre']  ?></option>
+                                    <option value="<?php echo $venta['id_pedidoU']; ?>" data-cedula="<?php echo $venta['documento_cliente']; ?>" <?php echo $seleccionado; ?>>
+                                    
+                                    <?php echo $venta['id_pedidoU'], '-', $venta['nombre']  ?></option>
                                 <?php } ?>
                             </select>
                         </div>

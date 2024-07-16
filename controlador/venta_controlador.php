@@ -107,6 +107,21 @@
 	}
 
 	
+//funcion para rellenar input de cliente con select de pedido
+	echo '<script type="text/javascript">
+	
+	function rellenar(){
+
+		var select = document.getElementById("idpedidoU");
+	
+		var seleccion = select.options[select.selectedIndex];
+
+		var cedula = seleccion.getAttribute("data-cedula");
+
+		document.getElementById("documentocliente").value = cedula;
+	}</script>';
+
+
 	/*----------------------------------------------ALERTAS DEL SISTEMA----------------------------------------------*/
 	
 	//Operacion exitosa

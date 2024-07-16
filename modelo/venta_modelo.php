@@ -116,7 +116,7 @@
 				$res = 1;
 			else
 				$res = 0;
-			return $res;   		 
+			return $res;   		
 		}
 		// id_venta=idventa	id_pedidoU=telefonop	documento_cliente=nombrep	cantidad_prendas=direccionp	precio_unitario=correop	descripcion	descuento	fecha_venta	
 

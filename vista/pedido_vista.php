@@ -181,15 +181,6 @@
                         <?php } ?>
                     </table>
                 </div>
-                <div class=""> 
-                    <a href="#" class="btn btn-infox modal_abrir_agregar">
-                        <img src="../vista/img/iconmas.png" alt="">
-                        <div class="texto-contenedor-pagina">
-                        <span class="texto-superior">Agregar pedidou</span>                  
-                        </div>
-                    </a>
-                </div>
-            </div>
         </div>
         
 

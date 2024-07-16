@@ -26,15 +26,15 @@
                         <tr>
                             <th>ID</th>
                             <th>N Pedido</th>
-                            <th>Documento Cliente</th>
+                            <th>Cedula</th>
                             <th>Cant. Prendas</th>
-                            <th>Precio U</th>
+                            <th>Precio Unitario</th>
                             <th>Descripción</th>
                             <th>Descuento</th>
-                            <th>Fecha_venta</th>
+                            <th>Fecha de venta</th>
                             <th>Acciones</th>
                         </tr>
-                        <?php foreach ($lista_venta as $venta){ ?>
+                        <?php foreach ($lista_venta1 as $venta){ ?>
                             <tr>
                                 <td><?php echo $venta['id_venta']; ?></td>
                                 <td><?php echo $venta['id_pedidoU']; ?></td>
@@ -42,7 +42,7 @@
                                 <td><?php echo $venta['cantidad_prendas']; ?></td>
                                 <td><?php echo $venta['precio_unitario']; ?></td>
                                 <td><?php echo $venta['descripcion']; ?></td>
-                                <td><?php echo $venta['descuento']; ?></td>
+                                <td><?php echo $venta['descuento']; ?>%</td>
                                 <td><?php echo $venta['fecha_venta']; ?></td>
                                 <td>
                                     <a href="venta_controlador.php?id=<?php echo $venta['id_venta'] ?>" class="btn btn-azul">
@@ -70,7 +70,7 @@
     <hr>
 
     <div class="px-6 py-4">
-                <div class="contenedor-entrada1 px-6 pt-5">
+                <div class="contenedor-entrada1 px-6 pt-5 dd11">
 
                 <?php if(isset($_GET['id'])){ ?>
 	                <h1 class="display-6"><b>Datos de la Venta</b></h1>
@@ -94,8 +94,14 @@
                             <input type="text" id="cantidadprendas" name="cantidadprendas" value="<?php echo $cantidadprendas; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
-                            <label for=area>N° Pedido: </label>
-                            <input type="text" id="idpedidoU" name="idpedidoU" value="<?php echo $idpedidoU; ?>" class="form-control form-control-sm">
+                        <label for=area>N° Pedido: </label>
+                        <select id="idpedidoU" name="idpedidoU" class="form-control form-control-sm">
+                                <option value="0">-- Seleccione --</option>
+                                <?php foreach ($lista_venta as $venta){
+                                    $seleccionado = ""; if( isset($_GET['id']) and $idpedidoU == $venta['id_pedidoU'] ) $seleccionado = "selected"; ?>
+                                    <option value="<?php echo $venta['id_pedidoU'] ?>" <?php echo $seleccionado ?>><?php echo $venta['id_pedidoU'], '-', $venta['nombre']  ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-md-12">
                             <label for=area>Precio por Unidad: </label>
@@ -111,7 +117,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for=area>Fecha: </label>
-                            <input type="text" id="fechaventa" name="fechaventa" value="<?php echo $fechaventa; ?>" class="form-control form-control-sm">
+                            <input type="date" id="fechaventa" name="fechaventa" value="<?php echo $fechaventa; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12"><br>
                             <center>

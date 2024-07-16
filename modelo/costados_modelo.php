@@ -1,9 +1,9 @@
 <?php
     require_once("conexionPDO.php");
-	class tipo_piModelo extends Conexion {
+	class costadosModelo extends Conexion {
 		// Atributos
-		private $idtipopi;
-		private $nombretipopi;
+		private $idcostados;
+		private $tipocostados;
 		private $objbd;
 
 
@@ -14,25 +14,25 @@
 		}
 		 
 		 // métodos 
-		public function get_idtipopi(){
-			return $this->idtipopi;
+		public function get_idcostados(){
+			return $this->idcostados;
 		}
 		
-		public function set_idtipopi( $idtipopi ){
-			$this->idtipopi = $idtipopi;	
+		public function set_idcostados( $idcostados ){
+			$this->idcostados = $idcostados;	
 		}
 	
-		public function get_nombretipopi(){
-			return $this->nombretipopi;
+		public function get_tipocostados(){
+			return $this->tipocostados;
 		}
 		
-		public function set_nombretipopi( $nombretipopi ){
-			$this->nombretipopi = $nombretipopi;
+		public function set_tipocostados( $tipocostados ){
+			$this->tipocostados = $tipocostados;
 		}
 	
 		public function consultar(){ // funcion para Buscar
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM costados";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros
@@ -43,10 +43,10 @@
 		} 
 		
 		public function incluir() { // funcion para Incluir
-			$registro = "INSERT INTO tipo_pi (id_tipoPI,nombre_tipoPI) VALUES (:idtipopi,:nombretipopi)";
+			$registro = "INSERT INTO costados (id_costados,tipo_costados) VALUES (:idcostados,:tipocostados)";
 			$preparado = $this->objbd->prepare($registro);
-			$preparado->bindParam(':idtipopi', $this->idtipopi); 
-			$preparado->bindParam(':nombretipopi', $this->nombretipopi);
+			$preparado->bindParam(':idcostados', $this->idcostados); 
+			$preparado->bindParam(':tipocostados', $this->tipocostados);
 			$resul= $preparado->execute();
 			
 			if( $resul )
@@ -55,17 +55,17 @@
 				$res = 0;
 			return $res;   		
 		}
-		// id_tipo_pi=idtipopi	id_pedidoU=telefonop	id_tipoPI=nombrep	nombre_tipoPI=direccionp	precio_unitario=correop	descripcion	descuento	fecha_tipo_pi	
+		// id_costados=idcostados	id_pedidoU=telefonop	id_costados=tipop	tipo_costados=direccionp	precio_unitario=correop	descripcion	descuento	fecha_costados	
 
 		 public function buscar(){ // funcion para Buscar
-			$registro="SELECT * from tipo_pi where id_tipoPI='".$this->idtipopi."'";
+			$registro="SELECT * from costados where id_costados='".$this->idcostados."'";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->execute();
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
 			if( $datos) {
 				$encontro = 1;
-				$this->idtipopi = $datos['id_tipoPI'];
-				$this->nombretipopi = $datos['nombre_tipoPI'];
+				$this->idcostados = $datos['id_costados'];
+				$this->tipocostados = $datos['tipo_costados'];
 			} else
 				$encontro = 0;
 				
@@ -73,23 +73,23 @@
 		} 
 		  
 		public function modificar(){ 
-			$registro= "UPDATE tipo_pi SET id_tipoPI='".$this->idtipopi."', nombre_tipoPI='".$this->nombretipopi."' WHERE id_tipopi='".$this->idtipopi."'";  
+			$registro= "UPDATE costados SET id_costados='".$this->idcostados."', tipo_costados='".$this->tipocostados."' WHERE id_costados='".$this->idcostados."'";  
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			return $resul;
 		}
 		
 		public function eliminar() 	{ // funcion para Eliminar
-			$registro = "DELETE FROM tipo_pi WHERE id_tipopi='".$this->idtipopi."'";
+			$registro = "DELETE FROM costados WHERE id_costados='".$this->idcostados."'";
 			$preparado = $this->objbd->prepare( $registro );
 			$resul = $preparado->execute();
 			return $resul;
 		}
-		// Fin de funciones CRUD de tipo_pi
-		// Consultar lista de tipo_pies
-		public function tipo_pi_consultar(){
+		// Fin de funciones CRUD de costados
+		// Consultar lista de costadoses
+		public function costados_consultar(){
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM costados";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros

@@ -1,78 +1,78 @@
 <?php
 	// Llamada al modelo
-	require_once("../modelo/tipopi_modelo.php");
-	$objtipo_pi = new tipo_piModelo();
+	require_once("../modelo/cortemanga_modelo.php");
+	$objcorte_manga = new corte_mangaModelo();
 	// Llamar controlador con funciones de diseño, para no repetir el mismo código
 	require_once("../controlador/vista_controlador.php");
 	
-	$lista_tipo_pi1 = $objtipo_pi->consultar();
-	$lista_tipopi = $objtipo_pi->tipo_pi_consultar();
+	$lista_corte_manga1 = $objcorte_manga->consultar();
+	$lista_cortemanga = $objcorte_manga->cortemanga_consultar();
 /*----------------------------------------------Formulario----------------------------------------------*/
 
-	//id_tipo_pi=id_tipo_pi	id_pedidoU=id_pedidoU	documento_cliente=documento_cliente	cantidad_prendas=cantidad_prendas	precio_unitario=precio_unitario	descripcion	descuento	fecha_tipo_pi	precio_unitario 
+	//id_corte_manga=id_corte_manga	id_pedidoU=id_pedidoU	documento_cliente=documento_cliente	cantidad_prendas=cantidad_prendas	precio_unitario=precio_unitario	descripcion	descuento	fecha_corte_manga	precio_unitario 
 	// Crear instancia de clase de Categorías
-	$idtipopi= "";
-	$nombretipopi= "";
+	$idcortemanga= "";
+	$tipocortemanga= "";
 	 
 	// Click > Botón Guardar
 	if(isset($_POST['guardar'])){
-		$objtipo_pi->set_idtipopi($_POST['idtipopi']);
-		$objtipo_pi->set_nombretipopi($_POST['nombretipopi']);
-		$result = $objtipo_pi->incluir();
+		$objcorte_manga->set_idcortemanga($_POST['idcortemanga']);
+		$objcorte_manga->set_tipocortemanga($_POST['tipocortemanga']);
+		$result = $objcorte_manga->incluir();
 		if ($result == 1){
-			/*header('Location: ../controlador/tipo_piForm_controlador.php?exito=true');*/
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+			/*header('Location: ../controlador/corte_mangaForm_controlador.php?exito=true');*/
+			header('Location: ../controlador/cortemanga_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			/*header('Location: ../controlador/tipo_piForm_controlador.php?exito=false');*/
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			/*header('Location: ../controlador/corte_mangaForm_controlador.php?exito=false');*/
+			header('Location: ../controlador/cortemanga_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en modificar desde la pantalla anterior
 	if (isset($_GET['id'])){
-		$objtipo_pi->set_idtipopi($_GET['id']);
+		$objcorte_manga->set_idcortemanga($_GET['id']);
 		
-		if ($objtipo_pi->buscar()){
-			$idtipopi = $objtipo_pi->get_idtipopi();
-			$nombretipopi = $objtipo_pi->get_nombretipopi();
+		if ($objcorte_manga->buscar()){
+			$idcortemanga = $objcorte_manga->get_idcortemanga();
+			$tipocortemanga = $objcorte_manga->get_tipocortemanga();
 		} else {
 			echo "<script>
 				alert('No se encontraron los datos');
-				location.href='tipopi_controlador.php';
+				location.href='cortemanga_controlador.php';
 			</script>";
 		}			   
 	}
 	// Click > Botón Modificar
 	if (isset($_POST['modificar'])){
-		$objtipo_pi->set_idtipopi($_POST['id_tipopi']);
-		$objtipo_pi->set_nombretipopi($_POST['nombretipopi']);
+		$objcorte_manga->set_idcortemanga($_POST['idcortemanga']);
+		$objcorte_manga->set_tipocortemanga($_POST['tipocortemanga']);
 
-		if ($objtipo_pi->modificar()){
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+		if ($objcorte_manga->modificar()){
+			header('Location: ../controlador/cortemanga_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			header('Location: ../controlador/cortemanga_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en eliminar desde la pantalla anterior
 	if (isset($_GET['eliminarId'])){
-		$objtipo_pi->set_idtipopi($_GET['eliminarId']);
+		$objcorte_manga->set_idcortemanga($_GET['eliminarId']);
 	
-		if($objtipo_pi->eliminar()){
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+		if($objcorte_manga->eliminar()){
+			header('Location: ../controlador/cortemanga_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			header('Location: ../controlador/cortemanga_controlador.php?exito=false');
 			exit();
 
 		}	
@@ -119,6 +119,6 @@
 	}
 	
 	// Llamada a la vista -> Formulario
-	require_once("../vista/tipopi_vista.php");
+	require_once("../vista/cortemanga_vista.php");
 
 ?>

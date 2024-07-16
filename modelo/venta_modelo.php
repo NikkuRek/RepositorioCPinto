@@ -4,6 +4,7 @@
 		// Atributos
 		private $idventa;
 		private $documentocliente;
+		private $nombrepedidou;
 		private $cantidadprendas;
 		private $idpedidoU;
 		private $preciounitario;
@@ -34,6 +35,10 @@
 		
 		public function set_documentocliente( $documentocliente ){
 			$this->documentocliente = $documentocliente;
+		}
+
+		public function set_nombrepedidou( $nombrepedidou ){
+			$this->nombrepedidou = $nombrepedidou;
 		}
 	
 		public function get_cantidadprendas(){
@@ -150,10 +155,10 @@
 			return $resul;
 		}
 		// Fin de funciones CRUD de venta
-		// Consultar lista de ventaes
+		// Consultar lista de pedidos
 		public function venta_consultar(){
 			$lista = array();
-			$registro = "SELECT * FROM venta";
+			$registro = "SELECT * FROM pedido_uniforme";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros

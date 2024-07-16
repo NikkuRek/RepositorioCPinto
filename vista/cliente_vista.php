@@ -85,21 +85,21 @@
                             <?php } ?>
                             <div class="col-md-12">
                                 <label for=area>Cédula: </label>
-                                <input type="text" id="documentocliente" name="documentocliente" value="<?php echo $documentocliente; ?>" class="from-control from-control-sm">
+                                <input type="text" id="documentocliente" name="documentocliente" value="<?php echo $documentocliente; ?>" class="form-control form-control-sm">
                             </div>
                         
 
                         <div class="col-md-12">
                             <label for=area>Nombre: </label>
-                            <input type="text" id="nombrec" name="nombrec" value="<?php echo $nombrec; ?>" class="from-control from-control-sm">
+                            <input type="text" id="nombrec" name="nombrec" value="<?php echo $nombrec; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
                             <label for=area>Teléfono: </label>
-                            <input type="text" id="telefonoc" name="telefonoc" value="<?php echo $telefonoc; ?>" class="from-control from-control-sm">
+                            <input type="text" id="telefonoc" name="telefonoc" value="<?php echo $telefonoc; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
                             <label for=area>Dirección: </label>
-                            <input type="text" id="direccionc" name="direccionc" value="<?php echo $direccionc; ?>" class="from-control from-control-sm">
+                            <input type="text" id="direccionc" name="direccionc" value="<?php echo $direccionc; ?>" class="form-control form-control-sm">
                         </div>
 
                         <div class="col-md-12"><br>
@@ -114,7 +114,7 @@
                             </center>
                         </div>
                     </div>
-                </from>	
+                </form>	
             </div>
 		</div>
 

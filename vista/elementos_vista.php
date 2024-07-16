@@ -36,7 +36,7 @@
                     </div>    
             </a>
 
-            <a href="../controlador/tipops_controlador.php" class="btn btn-blanco modal_abrir_modificar">      
+            <a href="../controlador/tipops_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -44,7 +44,7 @@
                     </div>    
             </a>
 
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/protector_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -52,7 +52,7 @@
                     </div>    
             </a>
             
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/tela_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -60,7 +60,7 @@
                     </div>    
             </a>
             
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/costados_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -68,7 +68,7 @@
                     </div>    
             </a>
 
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/manga_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -76,7 +76,7 @@
                     </div>    
             </a>
 
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/cuello_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -84,7 +84,7 @@
                     </div>    
             </a>
 
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/cierre_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>
@@ -92,7 +92,7 @@
                     </div>    
             </a>
 
-            <a href="#" class="btn btn-blanco">      
+            <a href="../controlador/cortemanga_controlador.php" class="btn btn-blanco">      
                 <img src="../vista/img/totalpedidoss.png" alt="Total Entradas">
                     <div class="texto-contenedor">
                     <span class="texto-inferior1"></span>

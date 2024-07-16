@@ -1,9 +1,9 @@
 <?php
     require_once("conexionPDO.php");
-	class tipo_piModelo extends Conexion {
+	class protectorModelo extends Conexion {
 		// Atributos
-		private $idtipopi;
-		private $nombretipopi;
+		private $idprotector;
+		private $tipoprotector;
 		private $objbd;
 
 
@@ -14,25 +14,25 @@
 		}
 		 
 		 // métodos 
-		public function get_idtipopi(){
-			return $this->idtipopi;
+		public function get_idprotector(){
+			return $this->idprotector;
 		}
 		
-		public function set_idtipopi( $idtipopi ){
-			$this->idtipopi = $idtipopi;	
+		public function set_idprotector( $idprotector ){
+			$this->idprotector = $idprotector;	
 		}
 	
-		public function get_nombretipopi(){
-			return $this->nombretipopi;
+		public function get_tipoprotector(){
+			return $this->tipoprotector;
 		}
 		
-		public function set_nombretipopi( $nombretipopi ){
-			$this->nombretipopi = $nombretipopi;
+		public function set_tipoprotector( $tipoprotector ){
+			$this->tipoprotector = $tipoprotector;
 		}
 	
 		public function consultar(){ // funcion para Buscar
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM protector";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros
@@ -43,10 +43,10 @@
 		} 
 		
 		public function incluir() { // funcion para Incluir
-			$registro = "INSERT INTO tipo_pi (id_tipoPI,nombre_tipoPI) VALUES (:idtipopi,:nombretipopi)";
+			$registro = "INSERT INTO protector (id_protector,tipo_protector) VALUES (:idprotector,:tipoprotector)";
 			$preparado = $this->objbd->prepare($registro);
-			$preparado->bindParam(':idtipopi', $this->idtipopi); 
-			$preparado->bindParam(':nombretipopi', $this->nombretipopi);
+			$preparado->bindParam(':idprotector', $this->idprotector); 
+			$preparado->bindParam(':tipoprotector', $this->tipoprotector);
 			$resul= $preparado->execute();
 			
 			if( $resul )
@@ -55,17 +55,17 @@
 				$res = 0;
 			return $res;   		
 		}
-		// id_tipo_pi=idtipopi	id_pedidoU=telefonop	id_tipoPI=nombrep	nombre_tipoPI=direccionp	precio_unitario=correop	descripcion	descuento	fecha_tipo_pi	
+		// id_protector=idprotector	id_pedidoU=telefonop	id_protector=tipop	tipo_protector=direccionp	precio_unitario=correop	descripcion	descuento	fecha_protector	
 
 		 public function buscar(){ // funcion para Buscar
-			$registro="SELECT * from tipo_pi where id_tipoPI='".$this->idtipopi."'";
+			$registro="SELECT * from protector where id_protector='".$this->idprotector."'";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->execute();
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
 			if( $datos) {
 				$encontro = 1;
-				$this->idtipopi = $datos['id_tipoPI'];
-				$this->nombretipopi = $datos['nombre_tipoPI'];
+				$this->idprotector = $datos['id_protector'];
+				$this->tipoprotector = $datos['tipo_protector'];
 			} else
 				$encontro = 0;
 				
@@ -73,23 +73,23 @@
 		} 
 		  
 		public function modificar(){ 
-			$registro= "UPDATE tipo_pi SET id_tipoPI='".$this->idtipopi."', nombre_tipoPI='".$this->nombretipopi."' WHERE id_tipopi='".$this->idtipopi."'";  
+			$registro= "UPDATE protector SET id_protector='".$this->idprotector."', tipo_protector='".$this->tipoprotector."' WHERE id_protector='".$this->idprotector."'";  
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			return $resul;
 		}
 		
 		public function eliminar() 	{ // funcion para Eliminar
-			$registro = "DELETE FROM tipo_pi WHERE id_tipopi='".$this->idtipopi."'";
+			$registro = "DELETE FROM protector WHERE id_protector='".$this->idprotector."'";
 			$preparado = $this->objbd->prepare( $registro );
 			$resul = $preparado->execute();
 			return $resul;
 		}
-		// Fin de funciones CRUD de tipo_pi
-		// Consultar lista de tipo_pies
-		public function tipo_pi_consultar(){
+		// Fin de funciones CRUD de protector
+		// Consultar lista de protectores
+		public function protector_consultar(){
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM protector";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros

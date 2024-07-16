@@ -31,13 +31,12 @@
 		$objventa->set_fechaventa($_POST['fechaventa']);
 		$result = $objventa->incluir();
 		if ($result == 1){
-			/*header('Location: ../controlador/ventaForm_controlador.php?exito=true');*/
+			
 			header('Location: ../controlador/venta_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			/*header('Location: ../controlador/ventaForm_controlador.php?exito=false');*/
 			header('Location: ../controlador/venta_controlador.php?exito=false');
 			exit();
 

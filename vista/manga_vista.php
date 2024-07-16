@@ -21,7 +21,7 @@
 
     <div class="contenido">
     <div class="ml-1">
-        <h1>Elementos - Tipo Prenda Inferior</h1>
+        <h1>Elementos - Tipo Manga</h1>
     </div>
 
     <hr>
@@ -34,17 +34,17 @@
                     <table class="table table-striped table-bordered table-hover table-sm">
                         <tr>
                             <th>ID</th>
-                            <th>Tipo producto</th>
+                            <th>Tipo Manga</th>
                             <th>Acciones</th>
                         </tr>
-                        <?php foreach ($lista_tipopi as $tipopi){ ?>
+                        <?php foreach ($lista_manga as $manga){ ?>
                             <tr>
-                                <td><?php echo $tipopi['id_tipoPI']; ?></td>
-                                <td><?php echo $tipopi['nombre_tipoPI']; ?></td>
+                                <td><?php echo $manga['id_manga']; ?></td>
+                                <td><?php echo $manga['tipo_manga']; ?></td>
                                 <td>
-                                    <a href="tipopi_controlador.php?id=<?php echo $tipopi['id_tipoPI'] ?>" class="btn btn-azul">
+                                    <a href="manga_controlador.php?id=<?php echo $manga['id_manga'] ?>" class="btn btn-azul">
                                     <img src="../vista/img/pencil.png" alt="Modificar" width="16" height="16"></a>
-                                  <a href="../controlador/tipopi_controlador.php?eliminarId=<?php echo $tipopi['id_tipoPI'] ?>" class="btn btn-rojo">
+                                  <a href="../controlador/manga_controlador.php?eliminarId=<?php echo $manga['id_manga'] ?>" class="btn btn-rojo">
                                      <img src="../vista/img/trash.png" alt="Eliminar" width=16 height=16></a>
                                 </td>
                             </tr>
@@ -53,21 +53,22 @@
                 </div>   
 
             <?php if(isset($_GET['id'])){ ?>
-                <h1 class="display-6"><b>Datos Producto </b></h1>
+                <h1 class="display-6"><b>Datos Manga</b></h1>
             <?php } else { ?>
-                <h1 class="display-6"><b>Agregar Tipo</b></h1>
+                <h1 class="display-6"><b>Agregar Manga</b></h1>
             <?php } ?>
             <form action="" method="POST">
                 <div id="f1" class="row col-md-4">
-
-                        <div class="col-md-12">
-                        <label for=area>ID: </label>
-                        <input type="text" id="idtipopi" name="idtipopi" value="<?php echo $idtipopi; ?>" class="form-control form-control-sm">
-                    </div>
+                    <?php if(isset($_GET['id'])){ ?>
+                    <?php } ?>
 
                     <div class="col-md-12">
+                        <label for=area>ID: </label>
+                        <input type="text" id="idmanga" name="idmanga" value="<?php echo $idmanga; ?>" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-12">
                         <label for=area>Tipo: </label>
-                        <input type="text" id="nombretipopi" name="nombretipopi" value="<?php echo $nombretipopi; ?>" class="form-control form-control-sm">
+                        <input type="text" id="tipomanga" name="tipomanga" value="<?php echo $tipomanga; ?>" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-12"><br>
                         <center>

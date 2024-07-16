@@ -87,7 +87,7 @@
 		} 
 
 		public function incluir() { // funcion para Incluir
-			$registro = "INSERT INTO pedidou (documento_cliente,nombre,precio,fecha_inicio,fecha_final,observacion) VALUES (:documentocliente,:nombrepedidou,:preciopu,:fechai,:fechaf,:obserpu)";
+			$registro = "INSERT INTO pedido_uniforme (documento_cliente,nombre,precio,fecha_inicio,fecha_final,observacion) VALUES (:documentocliente,:nombrepedidou,:preciopu,:fechai,:fechaf,:obserpu)";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->bindParam(':documentocliente', $this->documentocliente); 
 			$preparado->bindParam(':nombrepedidou', $this->nombrepedidou);
@@ -113,13 +113,13 @@
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
 			if( $datos) {
 				$encontro = 1;
-				$this->idpedidoU = $datos['id_pedidou'];
+				$this->idpedidoU = $datos['id_pedidoU'];
 				$this->documentocliente = $datos['documento_cliente'];
 				$this->nombrepedidou = $datos['nombre'];
-				$this->preciopu = $datos['id_pedidoU'];
-				$this->fechai = $datos['preciopu_unitario'];
-				$this->fechaf = $datos['fechafcion'];
-				$this->obserpu = $datos['obserputo'];
+				$this->preciopu = $datos['precio'];
+				$this->fechai = $datos['fecha_inicio'];
+				$this->fechaf = $datos['fecha_final'];
+				$this->obserpu = $datos['observacion'];
 			} else
 				$encontro = 0;
 				
@@ -154,31 +154,6 @@
 		} 
 
 
-        // Funcion que solicita los datos de las tablas, los une y los ordena por fecha
-        
-        public function DatosCombinados(){
-            
-        $sql = "SELECT e.*, p.nombrepedidou_prod, p.fechaf, p.preciopu, 'entrada' as tipo, e.fecha_entrada as fecha_ordenada FROM entrada e JOIN producto p ON e.id_producto = p.id_producto";
-        $sql2 = "SELECT s.*, p.nombrepedidou_prod, p.fechaf, p.preciopu, 'salida' as tipo, s.fecha_salida as fecha_ordenada FROM salida s JOIN producto p ON s.id_producto = p.id_producto";
 
-        // Ejecutar la consulta y obtener los resultados en un array asociativo
-        $resultados = $this->objbd->prepare($sql);
-        $resultados -> execute();
-        $datos_e = $resultados -> fetchAll(PDO::FETCH_ASSOC);
-
-        $resultados2 = $this->objbd->prepare($sql2);
-        $resultados2 -> execute();
-        $datos_s = $resultados2 -> fetchAll(PDO::FETCH_ASSOC);
-
-        //se combinan ambas consultas (entrada y salida) en un solo arreglo
-        $datos_combinados = array_merge($datos_e, $datos_s);
-
-        //se ordenan por fecha 
-        usort($datos_combinados, function($a, $b){
-            return strtotime($b['fecha_ordenada']) - strtotime($a['fecha_ordenada']);
-        });
-        
-        return $datos_combinados;
-    }
 }
 ?>

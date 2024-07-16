@@ -1,9 +1,9 @@
 <?php
     require_once("conexionPDO.php");
-	class tipo_piModelo extends Conexion {
+	class telaModelo extends Conexion {
 		// Atributos
-		private $idtipopi;
-		private $nombretipopi;
+		private $idtela;
+		private $tipotela;
 		private $objbd;
 
 
@@ -14,25 +14,25 @@
 		}
 		 
 		 // métodos 
-		public function get_idtipopi(){
-			return $this->idtipopi;
+		public function get_idtela(){
+			return $this->idtela;
 		}
 		
-		public function set_idtipopi( $idtipopi ){
-			$this->idtipopi = $idtipopi;	
+		public function set_idtela( $idtela ){
+			$this->idtela = $idtela;	
 		}
 	
-		public function get_nombretipopi(){
-			return $this->nombretipopi;
+		public function get_tipotela(){
+			return $this->tipotela;
 		}
 		
-		public function set_nombretipopi( $nombretipopi ){
-			$this->nombretipopi = $nombretipopi;
+		public function set_tipotela( $tipotela ){
+			$this->tipotela = $tipotela;
 		}
 	
 		public function consultar(){ // funcion para Buscar
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM tela";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros
@@ -43,10 +43,10 @@
 		} 
 		
 		public function incluir() { // funcion para Incluir
-			$registro = "INSERT INTO tipo_pi (id_tipoPI,nombre_tipoPI) VALUES (:idtipopi,:nombretipopi)";
+			$registro = "INSERT INTO tela (id_tela,tipo_tela) VALUES (:idtela,:tipotela)";
 			$preparado = $this->objbd->prepare($registro);
-			$preparado->bindParam(':idtipopi', $this->idtipopi); 
-			$preparado->bindParam(':nombretipopi', $this->nombretipopi);
+			$preparado->bindParam(':idtela', $this->idtela); 
+			$preparado->bindParam(':tipotela', $this->tipotela);
 			$resul= $preparado->execute();
 			
 			if( $resul )
@@ -55,17 +55,17 @@
 				$res = 0;
 			return $res;   		
 		}
-		// id_tipo_pi=idtipopi	id_pedidoU=telefonop	id_tipoPI=nombrep	nombre_tipoPI=direccionp	precio_unitario=correop	descripcion	descuento	fecha_tipo_pi	
+		// id_tela=idtela	id_pedidoU=telefonop	id_tela=tipop	tipo_tela=direccionp	precio_unitario=correop	descripcion	descuento	fecha_tela	
 
 		 public function buscar(){ // funcion para Buscar
-			$registro="SELECT * from tipo_pi where id_tipoPI='".$this->idtipopi."'";
+			$registro="SELECT * from tela where id_tela='".$this->idtela."'";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->execute();
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
 			if( $datos) {
 				$encontro = 1;
-				$this->idtipopi = $datos['id_tipoPI'];
-				$this->nombretipopi = $datos['nombre_tipoPI'];
+				$this->idtela = $datos['id_tela'];
+				$this->tipotela = $datos['tipo_tela'];
 			} else
 				$encontro = 0;
 				
@@ -73,23 +73,23 @@
 		} 
 		  
 		public function modificar(){ 
-			$registro= "UPDATE tipo_pi SET id_tipoPI='".$this->idtipopi."', nombre_tipoPI='".$this->nombretipopi."' WHERE id_tipopi='".$this->idtipopi."'";  
+			$registro= "UPDATE tela SET id_tela='".$this->idtela."', tipo_tela='".$this->tipotela."' WHERE id_tela='".$this->idtela."'";  
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			return $resul;
 		}
 		
 		public function eliminar() 	{ // funcion para Eliminar
-			$registro = "DELETE FROM tipo_pi WHERE id_tipopi='".$this->idtipopi."'";
+			$registro = "DELETE FROM tela WHERE id_tela='".$this->idtela."'";
 			$preparado = $this->objbd->prepare( $registro );
 			$resul = $preparado->execute();
 			return $resul;
 		}
-		// Fin de funciones CRUD de tipo_pi
-		// Consultar lista de tipo_pies
-		public function tipo_pi_consultar(){
+		// Fin de funciones CRUD de tela
+		// Consultar lista de telaes
+		public function tela_consultar(){
 			$lista = array();
-			$registro = "SELECT * FROM tipo_pi";
+			$registro = "SELECT * FROM tela";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros

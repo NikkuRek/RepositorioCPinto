@@ -1,78 +1,78 @@
 <?php
 	// Llamada al modelo
-	require_once("../modelo/tipopi_modelo.php");
-	$objtipo_pi = new tipo_piModelo();
+	require_once("../modelo/protector_modelo.php");
+	$objprotector = new protectorModelo();
 	// Llamar controlador con funciones de diseño, para no repetir el mismo código
 	require_once("../controlador/vista_controlador.php");
 	
-	$lista_tipo_pi1 = $objtipo_pi->consultar();
-	$lista_tipopi = $objtipo_pi->tipo_pi_consultar();
+	$lista_protector1 = $objprotector->consultar();
+	$lista_protector = $objprotector->protector_consultar();
 /*----------------------------------------------Formulario----------------------------------------------*/
 
-	//id_tipo_pi=id_tipo_pi	id_pedidoU=id_pedidoU	documento_cliente=documento_cliente	cantidad_prendas=cantidad_prendas	precio_unitario=precio_unitario	descripcion	descuento	fecha_tipo_pi	precio_unitario 
+	//id_protector=id_protector	id_pedidoU=id_pedidoU	documento_cliente=documento_cliente	cantidad_prendas=cantidad_prendas	precio_unitario=precio_unitario	descripcion	descuento	fecha_protector	precio_unitario 
 	// Crear instancia de clase de Categorías
-	$idtipopi= "";
-	$nombretipopi= "";
+	$idprotector= "";
+	$tipoprotector= "";
 	 
 	// Click > Botón Guardar
 	if(isset($_POST['guardar'])){
-		$objtipo_pi->set_idtipopi($_POST['idtipopi']);
-		$objtipo_pi->set_nombretipopi($_POST['nombretipopi']);
-		$result = $objtipo_pi->incluir();
+		$objprotector->set_idprotector($_POST['idprotector']);
+		$objprotector->set_tipoprotector($_POST['tipoprotector']);
+		$result = $objprotector->incluir();
 		if ($result == 1){
-			/*header('Location: ../controlador/tipo_piForm_controlador.php?exito=true');*/
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+			/*header('Location: ../controlador/protectorForm_controlador.php?exito=true');*/
+			header('Location: ../controlador/protector_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			/*header('Location: ../controlador/tipo_piForm_controlador.php?exito=false');*/
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			/*header('Location: ../controlador/protectorForm_controlador.php?exito=false');*/
+			header('Location: ../controlador/protector_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en modificar desde la pantalla anterior
 	if (isset($_GET['id'])){
-		$objtipo_pi->set_idtipopi($_GET['id']);
+		$objprotector->set_idprotector($_GET['id']);
 		
-		if ($objtipo_pi->buscar()){
-			$idtipopi = $objtipo_pi->get_idtipopi();
-			$nombretipopi = $objtipo_pi->get_nombretipopi();
+		if ($objprotector->buscar()){
+			$idprotector = $objprotector->get_idprotector();
+			$tipoprotector = $objprotector->get_tipoprotector();
 		} else {
 			echo "<script>
 				alert('No se encontraron los datos');
-				location.href='tipopi_controlador.php';
+				location.href='protector_controlador.php';
 			</script>";
 		}			   
 	}
 	// Click > Botón Modificar
 	if (isset($_POST['modificar'])){
-		$objtipo_pi->set_idtipopi($_POST['id_tipopi']);
-		$objtipo_pi->set_nombretipopi($_POST['nombretipopi']);
+		$objprotector->set_idprotector($_POST['idprotector']);
+		$objprotector->set_tipoprotector($_POST['tipoprotector']);
 
-		if ($objtipo_pi->modificar()){
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+		if ($objprotector->modificar()){
+			header('Location: ../controlador/protector_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			header('Location: ../controlador/protector_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en eliminar desde la pantalla anterior
 	if (isset($_GET['eliminarId'])){
-		$objtipo_pi->set_idtipopi($_GET['eliminarId']);
+		$objprotector->set_idprotector($_GET['eliminarId']);
 	
-		if($objtipo_pi->eliminar()){
-			header('Location: ../controlador/tipopi_controlador.php?exito=true');
+		if($objprotector->eliminar()){
+			header('Location: ../controlador/protector_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/tipopi_controlador.php?exito=false');
+			header('Location: ../controlador/protector_controlador.php?exito=false');
 			exit();
 
 		}	
@@ -119,6 +119,6 @@
 	}
 	
 	// Llamada a la vista -> Formulario
-	require_once("../vista/tipopi_vista.php");
+	require_once("../vista/protector_vista.php");
 
 ?>

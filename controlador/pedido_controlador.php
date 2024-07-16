@@ -9,7 +9,7 @@
 	$lista_pedidou = $objpedidou->pedidou_consultar();
 /*----------------------------------------------Formulario----------------------------------------------*/
 
-
+ 
 	// Crear instancia de clase de Categorías
 	$idpedidoU= "";
 	$documentocliente= "";

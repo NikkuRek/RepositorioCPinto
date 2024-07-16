@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2024 a las 07:36:22
+-- Tiempo de generación: 16-07-2024 a las 04:43:37
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -57,7 +57,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`documento_cliente`, `nombre`, `direccion`, `telefono`) VALUES
-('26737737', 'Ellyhan Rodriguez', 'mi casa en el este, mi corazon en la calle', '04245014391');
+('26737737', 'Ellyhan Rodriguez', 'mi casa en el este, mi corazon bajo un puente', '04245014391'),
+('5609825', 'Jose Rodriguez', 'en mi casa, se los juro', '04128329472');
 
 -- --------------------------------------------------------
 
@@ -158,13 +159,13 @@ INSERT INTO `manga` (`id_manga`, `tipo_manga`) VALUES
 --
 
 CREATE TABLE `pedido_uniforme` (
-  `id_pedidoU` varchar(6) NOT NULL,
+  `id_pedidoU` int(10) NOT NULL,
   `documento_cliente` varchar(10) DEFAULT NULL,
   `nombre` varchar(20) DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `img_producto` varchar(10) DEFAULT NULL,
   `fecha_inicio` datetime DEFAULT NULL,
-  `fecha_final` datetime DEFAULT NULL,
+  `fecha_final` date DEFAULT NULL,
   `observacion` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -173,7 +174,8 @@ CREATE TABLE `pedido_uniforme` (
 --
 
 INSERT INTO `pedido_uniforme` (`id_pedidoU`, `documento_cliente`, `nombre`, `precio`, `img_producto`, `fecha_inicio`, `fecha_final`, `observacion`) VALUES
-('1', '26737737', 'Ellyhan Rodriguez', '900.00', NULL, '2024-07-10 07:37:57', '2024-07-23 07:37:57', 'este es un texto de prueba, el cliente quiere un diseño lleno de pastichos por todos lados, con un logo de un cachito y una malta, con el nombre en el centro');
+(1, '26737737', 'Ellyhan Rodriguez', '5000.00', NULL, '2024-07-15 06:51:15', '2024-07-25', 'jamon y queso, un cachito, malta, unos zapatos talla 34, dos granos de cacao y pimienta hervida'),
+(2, '5609825', 'Jose Rodriguez', '503.00', NULL, '2024-07-15 21:28:41', '2024-07-22', 'imagenes alusivas a Dali');
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,7 @@ INSERT INTO `pedido_uniforme` (`id_pedidoU`, `documento_cliente`, `nombre`, `pre
 
 CREATE TABLE `prenda_inferior` (
   `id_prendain` varchar(3) NOT NULL,
-  `id_pedidoU` varchar(6) DEFAULT NULL,
+  `id_pedidoU` int(10) DEFAULT NULL,
   `id_tela` varchar(3) DEFAULT NULL,
   `id_costados` varchar(3) DEFAULT NULL,
   `id_tipoprod` varchar(3) DEFAULT NULL,
@@ -203,7 +205,7 @@ CREATE TABLE `prenda_inferior` (
 
 CREATE TABLE `prenda_superior` (
   `id_prendasu` varchar(3) NOT NULL,
-  `id_pedidoU` varchar(6) DEFAULT NULL,
+  `id_pedidoU` int(10) DEFAULT NULL,
   `id_tela` varchar(3) DEFAULT NULL,
   `id_costados` varchar(3) DEFAULT NULL,
   `id_tipoprod` varchar(3) DEFAULT NULL,
@@ -258,7 +260,7 @@ CREATE TABLE `seguimiento` (
   `id_seguimiento` varchar(3) NOT NULL,
   `id_departamento` varchar(10) DEFAULT NULL,
   `id_proceso` varchar(10) DEFAULT NULL,
-  `id_pedidoU` varchar(6) DEFAULT NULL,
+  `id_pedidoU` int(10) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   `estado` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -341,6 +343,14 @@ CREATE TABLE `tipo_pi` (
   `nombre_tipoPI` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `tipo_pi`
+--
+
+INSERT INTO `tipo_pi` (`id_tipoPI`, `nombre_tipoPI`) VALUES
+('1', 'pro'),
+('2', 'clasico');
+
 -- --------------------------------------------------------
 
 --
@@ -392,14 +402,14 @@ INSERT INTO `usuario` (`id_usuario`, `usuario`, `contraseña`, `nombre`, `rol`) 
 --
 
 CREATE TABLE `venta` (
-  `id_venta` varchar(6) NOT NULL,
-  `id_pedidoU` varchar(6) DEFAULT NULL,
+  `id_venta` int(10) NOT NULL,
+  `id_pedidoU` int(10) DEFAULT NULL,
   `documento_cliente` varchar(9) DEFAULT NULL,
   `cantidad_prendas` int(11) DEFAULT NULL,
   `precio_unitario` decimal(10,2) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `descuento` int(11) DEFAULT NULL,
-  `fecha_venta` datetime DEFAULT NULL
+  `fecha_venta` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -407,8 +417,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`id_venta`, `id_pedidoU`, `documento_cliente`, `cantidad_prendas`, `precio_unitario`, `descripcion`, `descuento`, `fecha_venta`) VALUES
-('1', '1', '26737737', 15, '23.00', 'y si hacemos un muñeco?', 100, '2024-07-13 21:34:09'),
-('2', '1', '26737737', 10, '20.00', 'ven y vamos a jugar', 5, '2024-07-13 21:34:33');
+(1, 1, '26737737', 15, '23.00', 'quiso pedir sin pagar pero ya se lo acomode en las costillas', 100, '2024-07-15'),
+(2, 2, '5609825', 5, '10.00', 'al fin', 10, '2024-02-11');
 
 --
 -- Índices para tablas volcadas
@@ -469,19 +479,18 @@ ALTER TABLE `pedido_uniforme`
 --
 ALTER TABLE `prenda_inferior`
   ADD PRIMARY KEY (`id_prendain`),
-  ADD KEY `id_pedidoU` (`id_pedidoU`),
   ADD KEY `id_tela` (`id_tela`),
   ADD KEY `id_costados` (`id_costados`),
   ADD KEY `id_tipoprod` (`id_tipoprod`),
   ADD KEY `id_protector` (`id_protector`),
-  ADD KEY `id_tipoPI` (`id_tipoPI`);
+  ADD KEY `id_tipoPI` (`id_tipoPI`),
+  ADD KEY `id_pedidoU` (`id_pedidoU`);
 
 --
 -- Indices de la tabla `prenda_superior`
 --
 ALTER TABLE `prenda_superior`
   ADD PRIMARY KEY (`id_prendasu`),
-  ADD KEY `id_pedidoU` (`id_pedidoU`),
   ADD KEY `id_tela` (`id_tela`),
   ADD KEY `id_costados` (`id_costados`),
   ADD KEY `id_tipoprod` (`id_tipoprod`),
@@ -490,7 +499,8 @@ ALTER TABLE `prenda_superior`
   ADD KEY `id_cortemanga` (`id_cortemanga`),
   ADD KEY `id_cuello` (`id_cuello`),
   ADD KEY `id_cierre` (`id_cierre`),
-  ADD KEY `id_tipoPS` (`id_tipoPS`);
+  ADD KEY `id_tipoPS` (`id_tipoPS`),
+  ADD KEY `id_pedidoU` (`id_pedidoU`);
 
 --
 -- Indices de la tabla `proceso`
@@ -512,7 +522,7 @@ ALTER TABLE `seguimiento`
   ADD PRIMARY KEY (`id_seguimiento`),
   ADD KEY `id_departamento` (`id_departamento`),
   ADD KEY `id_proceso` (`id_proceso`),
-  ADD KEY `id_pedidoU_seguimiento` (`id_pedidoU`);
+  ADD KEY `id_pedidoU` (`id_pedidoU`);
 
 --
 -- Indices de la tabla `talla`
@@ -569,7 +579,23 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `id_pedidoU_venta` (`id_pedidoU`);
+  ADD KEY `id_pedidoU` (`id_pedidoU`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `pedido_uniforme`
+--
+ALTER TABLE `pedido_uniforme`
+  MODIFY `id_pedidoU` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+  MODIFY `id_venta` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -591,19 +617,19 @@ ALTER TABLE `pedido_uniforme`
 -- Filtros para la tabla `prenda_inferior`
 --
 ALTER TABLE `prenda_inferior`
-  ADD CONSTRAINT `prenda_inferior_ibfk_1` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_inferior_ibfk_2` FOREIGN KEY (`id_tela`) REFERENCES `tela` (`id_tela`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_inferior_ibfk_3` FOREIGN KEY (`id_costados`) REFERENCES `costados` (`id_costados`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_inferior_ibfk_4` FOREIGN KEY (`id_tipoprod`) REFERENCES `tipo_producto` (`id_tipoprod`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_inferior_ibfk_5` FOREIGN KEY (`id_protector`) REFERENCES `protector` (`id_protector`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `prenda_inferior_ibfk_6` FOREIGN KEY (`id_tipoPI`) REFERENCES `tipo_pi` (`id_tipoPI`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `prenda_inferior_ibfk_6` FOREIGN KEY (`id_tipoPI`) REFERENCES `tipo_pi` (`id_tipoPI`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prenda_inferior_ibfk_7` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `prenda_superior`
 --
 ALTER TABLE `prenda_superior`
-  ADD CONSTRAINT `prenda_superior_ibfk_1` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_superior_ibfk_10` FOREIGN KEY (`id_tipoPS`) REFERENCES `tipo_ps` (`id_tipoPS`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prenda_superior_ibfk_11` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_superior_ibfk_2` FOREIGN KEY (`id_tela`) REFERENCES `tela` (`id_tela`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_superior_ibfk_3` FOREIGN KEY (`id_costados`) REFERENCES `costados` (`id_costados`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prenda_superior_ibfk_4` FOREIGN KEY (`id_tipoprod`) REFERENCES `tipo_producto` (`id_tipoprod`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -623,9 +649,9 @@ ALTER TABLE `proceso`
 -- Filtros para la tabla `seguimiento`
 --
 ALTER TABLE `seguimiento`
-  ADD CONSTRAINT `id_pedidoU_seguimiento` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `seguimiento_ibfk_1` FOREIGN KEY (`id_departamento`) REFERENCES `proceso` (`id_departamento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `seguimiento_ibfk_2` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `seguimiento_ibfk_2` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `seguimiento_ibfk_3` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `talla_pi`
@@ -645,7 +671,7 @@ ALTER TABLE `talla_ps`
 -- Filtros para la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD CONSTRAINT `id_pedidoU_venta` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_pedidoU`) REFERENCES `pedido_uniforme` (`id_pedidoU`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

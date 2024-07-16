@@ -1,10 +1,10 @@
 <?php
 	// Temporal: Llamamos al modelo de conexión [ Nos interesa, para mantener la sessión ]
 	require_once("../modelo/conexionPDO.php");
-    require_once("../modelo/producto_modelo.php");
-    require_once("../modelo/entrada_modelo.php");
-    require_once("../modelo/salida_modelo.php");
-    require_once("../modelo/cliente_modelo.php");
+    //require_once("../modelo/producto_modelo.php");
+    //require_once("../modelo/entrada_modelo.php");
+    //require_once("../modelo/salida_modelo.php");
+    //require_once("../modelo/cliente_modelo.php");
 
 
 	$inicio = new Conexion();

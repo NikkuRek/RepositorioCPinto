@@ -21,7 +21,7 @@
 
     <div class="contenido">
     <div class="ml-1">
-        <h1>Elementos - Tipo Prenda Inferior</h1>
+        <h1>Elementos - Tipo Prenda Superior</h1>
     </div>
 
     <hr>
@@ -37,14 +37,14 @@
                             <th>Tipo producto</th>
                             <th>Acciones</th>
                         </tr>
-                        <?php foreach ($lista_tipopi as $tipopi){ ?>
+                        <?php foreach ($lista_tipops as $tipops){ ?>
                             <tr>
-                                <td><?php echo $tipopi['id_tipoPI']; ?></td>
-                                <td><?php echo $tipopi['nombre_tipoPI']; ?></td>
+                                <td><?php echo $tipops['id_tipoPS']; ?></td>
+                                <td><?php echo $tipops['nombre_tipoPS']; ?></td>
                                 <td>
-                                    <a href="tipopi_controlador.php?id=<?php echo $tipopi['id_tipoPI'] ?>" class="btn btn-azul">
+                                    <a href="tipops_controlador.php?id=<?php echo $tipops['id_tipoPS'] ?>" class="btn btn-azul">
                                     <img src="../vista/img/pencil.png" alt="Modificar" width="16" height="16"></a>
-                                  <a href="../controlador/tipopi_controlador.php?eliminarId=<?php echo $tipopi['id_tipoPI'] ?>" class="btn btn-rojo">
+                                  <a href="../controlador/tipops_controlador.php?eliminarId=<?php echo $tipops['id_tipoPS'] ?>" class="btn btn-rojo">
                                      <img src="../vista/img/trash.png" alt="Eliminar" width=16 height=16></a>
                                 </td>
                             </tr>
@@ -59,15 +59,16 @@
             <?php } ?>
             <form action="" method="POST">
                 <div id="f1" class="row col-md-4">
-
-                        <div class="col-md-12">
-                        <label for=area>ID: </label>
-                        <input type="text" id="idtipopi" name="idtipopi" value="<?php echo $idtipopi; ?>" class="form-control form-control-sm">
-                    </div>
+                    <?php if(isset($_GET['id'])){ ?>
+                    <?php } ?>
 
                     <div class="col-md-12">
+                        <label for=area>ID: </label>
+                        <input type="text" id="idtipops" name="idtipops" value="<?php echo $idtipops; ?>" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-12">
                         <label for=area>Tipo: </label>
-                        <input type="text" id="nombretipopi" name="nombretipopi" value="<?php echo $nombretipopi; ?>" class="form-control form-control-sm">
+                        <input type="text" id="nombretipops" name="nombretipops" value="<?php echo $nombretipops; ?>" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-12"><br>
                         <center>

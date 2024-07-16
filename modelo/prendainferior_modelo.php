@@ -1,7 +1,7 @@
 <?php
     require_once("conexionPDO.php");
     //session_start();
-    class pedidouModelo extends Conexion {
+    class prendainModelo extends Conexion {
 		private $idprendain;
         private $idpedidoU;
         private $idtela;
@@ -102,17 +102,17 @@
 			$this->tirante = $tirante;
 		}
 
-		public function get_obserpu(){
-			return $this->obserpu;
+		public function get_obserpi(){
+			return $this->obserpi;
 		}
 
-		public function set_obserpu( $obserpu ){
-			$this->obserpu = $obserpu;
+		public function set_obserpi( $obserpi ){
+			$this->obserpi = $obserpi;
 		}
 	
 		public function consultar(){ // funcion para Buscar
 			$lista = array();
-			$registro = "SELECT * FROM pedido_uniforme";
+			$registro = "SELECT * FROM prenda_inferior";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros
@@ -123,14 +123,18 @@
 		} 
 
 		public function incluir() { // funcion para Incluir
-			$registro = "INSERT INTO pedidou (documento_cliente,nombre,precio,fecha_inicio,fecha_final,observacion) VALUES (:idtela,:idtipoprod,:idprotector,:idtipo,:color,:obserpu)";
+			$registro = "INSERT INTO prenda_inferior (id_pedidoU,id_tela,id_costados,id_tipoprod,id_protector,id_tipoPI,color,tapa_trasera,tirante,descripcion) VALUES (:idpedidoU,:idtela,:idcostados,:idtipoprod,:idprotector,:idtipopi,:color,:tapatra,:tirante,:obserpi)";
 			$preparado = $this->objbd->prepare($registro);
+			$preparado->bindParam(':idpedidoU', $this->idpedidoU); 
 			$preparado->bindParam(':idtela', $this->idtela); 
+			$preparado->bindParam(':idcostados', $this->iidcostados);
 			$preparado->bindParam(':idtipoprod', $this->idtipoprod);
 			$preparado->bindParam(':idprotector', $this->idprotector);
-			$preparado->bindParam(':idtipo', $this->idtipo);
+			$preparado->bindParam(':idtipopi', $this->idtipopi);
 			$preparado->bindParam(':color', $this->color);
-			$preparado->bindParam(':obserpu', $this->obserpu);
+			$preparado->bindParam(':tapatra', $this->tapatra);
+			$preparado->bindParam(':tirante', $this->tirante);
+			$preparado->bindParam(':obserpi', $this->obserpi);
 
 			$resul= $preparado->execute();
 			
@@ -140,46 +144,50 @@
 				$res = 0;
 			return $res;   		
 		}
-		// id_pedidou=idpedidoU	id_pedidoU=telefonop	documento_cliente=idtipoprodp	nombre=direccionp	idprotector_unitario=correop	colorcion	obserputo	
+		// id_pedidou=idpedidoU	id_pedidoU=telefonop	id_prendain=idtipoprodp	id_pedidoU=direccionp	idprotector_unitario=correop	colorcion	obserpito	
 
 		 public function buscar(){ // funcion para Buscar
-			$registro="SELECT * from pedido_uniforme where id_pedidou='".$this->idpedidoU."'";
+			$registro="SELECT * from prenda_inferior where id_pedidoU='".$this->idpedidoU."'";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->execute();
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
 			if( $datos) {
 				$encontro = 1;
+				$this->idprendain = $datos['id_pendrain'];
 				$this->idpedidoU = $datos['id_pedidou'];
-				$this->idtela = $datos['documento_cliente'];
-				$this->idtipoprod = $datos['nombre'];
-				$this->idprotector = $datos['id_pedidoU'];
-				$this->idtipo = $datos['idprotector_unitario'];
-				$this->color = $datos['colorcion'];
-				$this->obserpu = $datos['obserputo'];
+				$this->idtela = $datos['id_tela'];
+				$this->idcostados = $datos['id_costados'];
+				$this->idtipoprod = $datos['id_tipopdrod'];
+				$this->idprotector = $datos['id_protector'];
+				$this->idtipopi = $datos['id_tipoPI'];
+				$this->color = $datos['color'];
+				$this->tapatra = $datos['tapa_trasera'];
+				$this->tirante = $datos['tirante'];	
+				$this->obserpi = $datos['descripcion'];
 			} else
-				$encontro = 0;
-				
+			$encontro = 0;
+			
 			return $encontro;
-		}         
+		}          
 
 		public function modificar(){ 
-			$registro= "UPDATE pedidou SET documento_cliente='".$this->idtela."', nombre='".$this->idtipoprod."', precio='".$this->idprotector."', fecha_inicio='".$this->idtipo."', fecha_final='".$this->color."', observacion='".$this->obserpu."' WHERE id_pedidoU='".$this->idpedidoU."'";  
+			$registro= "UPDATE pedidou SET id_prendain='".$this->idtela."', id_pedidoU='".$this->idtipoprod."', precio='".$this->idprotector."', fecha_inicio='".$this->idtipo."', fecha_final='".$this->color."', observacion='".$this->obserpi."' WHERE id_pedidoU='".$this->idpedidoU."'";  
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			return $resul;
 		}
 		
 		public function eliminar() 	{ // funcion para Eliminar
-			$registro = "DELETE FROM pedido_uniforme WHERE id_pedidou='".$this->idpedidoU."'";
+			$registro = "DELETE FROM prenda_inferior WHERE id_pedidou='".$this->idpedidoU."'";
 			$preparado = $this->objbd->prepare( $registro );
 			$resul = $preparado->execute();
 			return $resul;
 		}
 		// Fin de funciones CRUD de pedidou
 		// Consultar lista de pedidoues
-		public function pedidou_consultar(){
+		public function prendain_consultar(){
 			$lista = array();
-			$registro = "SELECT * FROM pedido_uniforme";
+			$registro = "SELECT * FROM prenda_inferior";
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			// Almacenar en un arreglo todos los registros

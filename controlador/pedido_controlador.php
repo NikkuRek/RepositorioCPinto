@@ -46,7 +46,7 @@
 		$objpedidou->set_idpedidoU($_GET['id']);
 		
 		if ($objpedidou->buscar()){
-			$id_pedidou = $objpedidou->get_idpedidoU();
+			$id_pedidoU = $objpedidou->get_idpedidoU();
 			$documentocliente = $objpedidou->get_documentocliente();
 			$nombrepedidou = $objpedidou->get_nombrepedidou();
 			$preciopu = $objpedidou->get_preciopu();
@@ -59,11 +59,12 @@
 				alert('No se encontraron los datos');
 				location.href='pedido_controlador.php';
 			</script>";
-		}			   
+		}	
+				   
 	}
 	// Click > Botón Modificar
 	if (isset($_POST['modificar'])){
-		$objpedidou->set_idpedidoU($_POST['id_pedidou_input']);
+		$objpedidou->set_idpedidoU($_POST['idpedidoU']);
 		$objpedidou->set_documentocliente($_POST['documentocliente']);
 		$objpedidou->set_nombrepedidou($_POST['nombrepedidou']);
 		$objpedidou->set_preciopu($_POST['preciopu']);

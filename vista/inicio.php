@@ -35,7 +35,7 @@
 <html>
 <head>
         <meta charset="UTF-8">
-		<title>Librería y Papelería Los Mayureles, C.A.</title>
+		<title>GEDOP</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/estilosinicio.css">
         <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -87,28 +87,7 @@
             </a>
             </div>
 
-        <div class="px-6 py-4">
-            <div class="contenedor-entrada1 px-6 pt-5">
 
-
-        <div class="contenedor-imagen">
-                <h1 class="titulo"><b>Selecciona el tipo de transacción a consultar</b></h1>
-
-<form id="productoForm" action="" method="POST" target="_blank">
-	<div id="zona06">		 
-		<select class="select-menu" name="valor" value="" id="valor"  onchange="Funcion01()">
-			<option value="#">Seleccione</option>
-			<option value="0">General</option> 
-			<option value="1">Entrada</option>
-			<option value="2">Salida</option>
-		</select>	
-    </div>
-
-    </form>
-    
-<div id="zona07">
-         <p> </p>
-</div>
 
 
 <script type="text/javascript" src="../vista/js/jquery-3.7.1.min.js"></script>

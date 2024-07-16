@@ -107,15 +107,28 @@
                                                 <input type="submit" value="Modificar" name="modificar" class="btn btn-info">
                                                 <?php } ?> 
                                                 <label for="btn-add" class="btn btn-danger"> Volver </label>           
-                                            </center>
+                                            </center> 
                                         </div>
                                         <div class="col-md-12">
-                                            <?php include ("prendasu_pop-up.php") ?>
-                                        </div>
-                                    </div>
+                                            <div> 
+                                                <label for="btn-add3" class="btn btn-infox modal_abrir_agregar">
+                                                    <img src="../vista/img/iconmas.png" alt="">
+                                                    <div class="texto-contenedor-pagina">
+                                                        <a href="../controlador/prendasuperior_controlador.php" class="texto-superior">Agregar Prenda Superior </a>              
+                                                    </div>
+                                                </label>
+                                            </div>   
+                                        </div>  
 
                                         <div class="col-md-12">
-                                            <?php include ("prendain_pop-up.php") ?>
+                                            <div> 
+                                                <label for="btn-add3" class="btn btn-infox modal_abrir_agregar">
+                                                    <img src="../vista/img/iconmas.png" alt="">
+                                                    <div class="texto-contenedor-pagina">
+                                                        <a href="../controlador/prendainferior_controlador.php" class="texto-superior">Agregar Prenda Inferior </a>              
+                                                    </div>
+                                                </label>
+                                            </div>   
                                         </div>  
                                 </form>
                             </div>
@@ -155,25 +168,41 @@
                                 <td>
                                     
 
-                                    <!-- <a href="pedido_controlador.php?id=<?php echo $pedidou['id_pedidoU'] ?>" class="btn btn-azul modal_abrir_modificar">
-                                    <img src="../vista/img/pencil.png" alt="Modificar" width="16" height="16"></a> -->
+                                    <a href="pedido_controlador.php?id=<?php echo $pedidou['id_pedidoU'] ?>" class="btn btn-azul modal_abrir_modificar">
+                                    <img src="../vista/img/pencil.png" alt="Modificar" width="16" height="16"></a>
                                     <a href="../controlador/pedido_controlador.php?eliminarId=<?php echo $pedidou['id_pedidoU'] ?>" class="btn btn-rojo">
                                     <img src="../vista/img/trash.png" alt="Eliminar" width=16 height=16></a>
-            <!-- Pop-up -->
-            <div class="add">
-                <input type="checkbox" id="btn-add" class="Check">
-                <div> 
-                    <label for="btn-add"  class="btn btn-azul modal_abrir_modificar">
-                        <a href="pedido_controlador.php?id=<?php echo $pedidou['id_pedidoU'] ?>">
-                    <img src="../vista/img/pencil.png" alt="Modificar" width="16" height="16"></a>
-                                    </label>
                 </div>
 
-                <div class="back"></div>        
-    
-                <div class="container-add">
-                    <div class="cont-add">
-                        <div class="px-6 py-4">
+                </div>
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+                <div class=""> 
+                    <a href="#" class="btn btn-infox modal_abrir_agregar">
+                        <img src="../vista/img/iconmas.png" alt="">
+                        <div class="texto-contenedor-pagina">
+                        <span class="texto-superior">Agregar pedidou</span>                  
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+        <?php if(isset($_GET['id'])){ ?>
+        <!-- Pop-up -->
+<div class="mod">
+    <input type="checkbox" id="btn-mod" class="Check" checked>     
+
+<div class="back"></div>    
+
+<div class="container-mod">
+    <div class="cont-mod">
+    <div class="px-6 py-4">
                             <div class="contenedor-entrada1 px-6 pt-5">
                                 <?php if(isset($_GET['id'])){ ?>
                                     <h1 class="display-6"><b>Datos del Pedido</b></h1>
@@ -221,40 +250,20 @@
                                                 <?php } else { ?>
                                                 <input type="submit" value="Modificar" name="modificar" class="btn btn-info">
                                                 <?php } ?> 
-                                                <label for="btn-add" class="btn btn-danger"> Volver </label>           
+                                                <a href="../controlador/pedido_controlador.php" class="btn btn-danger"> Volver </a>           
                                             </center>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <?php include ("prendasu_pop-up.php") ?>
                                         </div>
                                     </div>
 
-                                        <div class="col-md-12">
-                                            <?php include ("prendain_pop-up.php") ?>
-                                        </div>  
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- Pop-up -->
+                        
+    </div>
+</div>
+<!-- Pop-up -->		
+    <?php } ?>
 
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                </div>
-                <div class=""> 
-                    <a href="#" class="btn btn-infox modal_abrir_agregar">
-                        <img src="../vista/img/iconmas.png" alt="">
-                        <div class="texto-contenedor-pagina">
-                        <span class="texto-superior">Agregar pedidou</span>                  
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
+
     <script type="text/javascript" src="../vista/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../vista/js/funciones1.js"></script>	
     <script src="../vista/js/sweetalert2.min.js"></script>

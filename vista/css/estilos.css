@@ -490,7 +490,8 @@ body {
 
   #btn-add,
   #btn-add2,
-  #btn-add3{display: none;}
+  #btn-add3,
+  #btn-mod{display: none;}
   
   .Check{
       position: absolute;
@@ -504,6 +505,7 @@ body {
       display: none;
   }
   
+  .container-mod,
   .container-add{
     position: absolute;
     display: flex;
@@ -528,14 +530,16 @@ body {
     background-repeat: no-repeat;
       background-size: cover;
     width: 1200px; height: 600px;
-    top: 100px; left: -150px;
+    top: 100px; left: 400px;
     transition: all 500ms ease;
     opacity: 0;
     visibility: hidden;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
       border-radius: 30px;
   }
   
   #btn-add:checked ~ .back,
+  #btn-mod:checked ~ .back,
   #btn-add2:checked ~ .back2,
   #btn-add3:checked ~ .back3
   {
@@ -543,12 +547,15 @@ body {
   }
   
   #btn-add:checked ~ .container-add,
+  #btn-mod:checked ~ .container-mod,
   #btn-add2:checked ~ .container-add2,
   #btn-add3:checked ~ .container-add3{
     opacity: 1;
     visibility: visible;
   }
+
   
+  .cont-mod,
   .cont-add{  
     color: black;
       background-color: rgba(0, 0, 0, 0);
@@ -565,22 +572,19 @@ body {
     margin: 200px;
   }
   
+  #btn-mod:checked ~ .container-mod .cont-mod  
   #btn-add:checked ~ .container-add .cont-add{
     transform: translateY(0%);
     transition: all 500ms ease;
   }
 
+  #btn-mod:checked ~ .container-mod,  
   #btn-add:checked ~ .container-add{
     transform: translateY(-100px);
     transition: all 500ms ease;
   }
   
-  #btn-add2:checked ~ .container-add2,
-  #btn-add3:checked ~ .container-add3{
-    transform: translateY(-41%);
-    transition: all 500ms ease;
-  }
   
-  /*Fin de Pop-Upkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
+  /*Fin de Pop-Up*/
   
   

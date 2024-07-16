@@ -1,98 +1,120 @@
 <?php
 	// Llamada al modelo
-	require_once("../modelo/pedido_modelo.php");
-	$objpedidou = new pedidouModelo();
+	require_once("../modelo/prendainferior_modelo.php");
+	$objprendain= new prendainModelo();
 	// Llamar controlador con funciones, para no repetir el mismo código
 	require_once("vista_controlador.php");
 
-	$lista_pedidou1 = $objpedidou->consultar();
-	$lista_pedidou = $objpedidou->pedidou_consultar();
+	$lista_prendain1 = $objprendain->consultar();
+	$lista_prendain= $objprendain->prendain_consultar();
 /*----------------------------------------------Formulario----------------------------------------------*/
 
  
 	// Crear instancia de clase de Categorías
+	$idprendain= "";
 	$idpedidoU= "";
-	$documentocliente= "";
-	$nombrepedidou= "";
-	$preciopu= 0.0;
-	$fechai= '2024-02-11';
-	$fechaf= '2024-02-11';
-	$obserpu= "";
+	$idtela= "";
+	$idcostados= "";
+	$idtipoprod= "";
+	$idprotector= "";
+	$idtipopi= "";
+	$color= "";
+	$tapatra= "";
+	$tirante= "";
+	$obserpi= "";
+
 	 
 	// Click > Botón Guardar
 	if(isset($_POST['guardar'])){
-		$objpedidou->set_documentocliente($_POST['documentocliente']);
-		$objpedidou->set_nombrepedidou($_POST['nombrepedidou']);
-		$objpedidou->set_preciopu($_POST['preciopu']);
-		$objpedidou->set_fechai($_POST['fechai']);
-		$objpedidou->set_fechaf($_POST['fechaf']);
-		$objpedidou->set_obserpu($_POST['obserpu']);
-		$result = $objpedidou->incluir();
+		$objprendain->set_idpedidoU($_POST['idpedidoU']);
+		$objprendain->set_idtela($_POST['idtela']);
+		$objprendain->set_idcostados($_POST['idcostados']);
+		$objprendain->set_idtipoprod($_POST['idtipoprod']);
+		$objprendain->set_idprotector($_POST['idprotector']);
+		$objprendain->set_idtipopi($_POST['idtipopi']);
+		$objprendain->set_color($_POST['color']);
+		$objprendain->set_tapatra($_POST['tapatra']);
+		$objprendain->set_tirante($_POST['tirante']);
+		$objprendain->set_obserpi($_POST['obserpi']);
+		$result = $objprendain->incluir();
 		if ($result == 1){
 			/*header('Location: ../controlador/proveedorForm_controlador.php?exito=true');*/
-			header('Location: ../controlador/pedido_controlador.php?exito=true');
+			header('Location: ../controlador/prendainferior_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
 			/*header('Location: ../controlador/proveedorForm_controlador.php?exito=false');*/
-			header('Location: ../controlador/pedido_controlador.php?exito=false');
+			header('Location: ../controlador/prendainferior_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en modificar desde la pantalla anterior
 	if (isset($_GET['id'])){
-		$objpedidou->set_idpedidoU($_GET['id']);
+		$objprendain->set_idprendain($_GET['id']);
 		
-		if ($objpedidou->buscar()){
-			$id_pedidou = $objpedidou->get_idpedidoU();
-			$documentocliente = $objpedidou->get_documentocliente();
-			$nombrepedidou = $objpedidou->get_nombrepedidou();
-			$preciopu = $objpedidou->get_preciopu();
-			$fechai = $objpedidou->get_fechai();
-			$fechaf = $objpedidou->get_fechaf();
-			$obserpu = $objpedidou->get_obserpu();
+		if ($objprendain->buscar()){
+			$id_prendain= $objprendain->get_idprendain();
+			$$idprendain= $objprendain->get_idpedidoU();
+			$idtela = $objprendain->get_idtela();
+			$idcostados = $objprendain->get_idcostados();
+			$idtipoprod = $objprendain->get_idtipoprod();
+			$idprotector = $objprendain->get_idprotector();
+			$idtipopi = $objprendain->get_idtipopi();
+			$color = $objprendain->get_color();
+			$tirante = $objprendain->get_tirante();
+			$obserpi = $objprendain->get_obserpi();
+			$i = $objprendain->get_i();
+
+
 
 		} else {
 			echo "<script>
 				alert('No se encontraron los datos');
-				location.href='pedido_controlador.php';
+				location.href='prendainferior_controlador.php';
 			</script>";
 		}			   
 	}
 	// Click > Botón Modificar
 	if (isset($_POST['modificar'])){
-		$objpedidou->set_idpedidoU($_POST['id_pedidou_input']);
-		$objpedidou->set_documentocliente($_POST['documentocliente']);
-		$objpedidou->set_nombrepedidou($_POST['nombrepedidou']);
-		$objpedidou->set_preciopu($_POST['preciopu']);
-		$objpedidou->set_fechai($_POST['fechai']);
-		$objpedidou->set_fechaf($_POST['fechaf']);
-		$objpedidou->set_obserpu($_POST['obserpu']);
+		$objprendain->set_prendain($_POST['id_pedidouc_input']);
+		$objprendain->set_idpedidoU($_POST['$idpedidoU']);
+		$objprendain->set_idtela($_POST['idtela']);
+		$objprendain->set_idcostados($_POST['idcostados']);
+		$objprendain->set_idtipoprod($_POST['idtipoprod']);
+		$objprendain->set_idprotector($_POST['idprotector']);
+		$objprendain->set_idtipopi($_POST['idtipopi']);
+		$objprendain->set_color($_POST['color']);
+		$objprendain->set_tapatra($_POST['tapatra']);
+		$objprendain->set_tirante($_POST['tirante']);
+		$objprendain->set_obserpi($_POST['obserpi']);
 
-		if ($objpedidou->modificar()){
-			header('Location: ../controlador/pedido_controlador.php?exito=true');
+		$objprendain->set_i($_POST['i']);
+
+
+		if ($objprendain->modificar()){
+			header('Location: ../controlador/prendainferior_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/pedido_controlador.php?exito=false');
+			header('Location: ../controlador/prendainferior_controlador.php?exito=false');
 			exit();
 
 		}	
 	}
 	// Si hacen clic en eliminar desde la pantalla anterior
 	if (isset($_GET['eliminarId'])){
-		$objpedidou->set_idpedidoU($_GET['eliminarId']);
+		$objprendain->set_idprendain($_GET['eliminarId']);
 	
-		if($objpedidou->eliminar()){
-			header('Location: ../controlador/pedido_controlador.php?exito=true');
+		if($objprendain->eliminar()){
+			header('Location: ../controlador/prendainferior_controlador.php?exito=true');
 			exit();
 			
 		} else {
 			
-			header('Location: ../controlador/pedido_controlador.php?exito=false');
+			header('Location: ../controlador/prendainferior_controlador.php?exito=false');
 			exit();
 
 		}	
@@ -100,7 +122,7 @@
 
 	//Boton para Volver
 	if (isset($_POST['Volver'])) {
-		echo "<script>location.href='pedido_controlador.php'</script>";
+		echo "<script>location.href='prendainferior_controlador.php'</script>";
 	}
 
 	
@@ -147,5 +169,5 @@
 	}
 
 	// Llamada a la vista
-	require_once("../vista/pedido_vista.php");
+	require_once("../vista/prendain_pop-up.php");
 ?>

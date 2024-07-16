@@ -57,7 +57,7 @@
 		public function set_fechai( $fechai ){
 			$this->fechai = $fechai;
 		}
-
+ 
 		public function get_fechaf(){
 			return $this->fechaf;
 		}
@@ -107,7 +107,7 @@
 		// id_pedidou=idpedidoU	id_pedidoU=telefonop	documento_cliente=nombrepedidoup	nombre=direccionp	preciopu_unitario=correop	fechafcion	obserputo	
 
 		 public function buscar(){ // funcion para Buscar
-			$registro="SELECT * from pedido_uniforme where id_pedidou='".$this->idpedidoU."'";
+			$registro="SELECT * from pedido_uniforme where id_pedidoU='".$this->idpedidoU."'";
 			$preparado = $this->objbd->prepare($registro);
 			$preparado->execute();
 			$datos = $preparado->fetch(PDO::FETCH_ASSOC);
@@ -127,7 +127,7 @@
 		}         
 
 		public function modificar(){ 
-			$registro= "UPDATE pedidou SET documento_cliente='".$this->documentocliente."', nombre='".$this->nombrepedidou."', precio='".$this->preciopu."', fecha_inicio='".$this->fechai."', fecha_final='".$this->fechaf."', observacion='".$this->obserpu."' WHERE id_pedidoU='".$this->idpedidoU."'";  
+			$registro= "UPDATE pedido_uniforme SET documento_cliente='".$this->documentocliente."', nombre='".$this->nombrepedidou."', precio='".$this->preciopu."', fecha_inicio='".$this->fechai."', fecha_final='".$this->fechaf."', observacion='".$this->obserpu."' WHERE id_pedidoU='".$this->idpedidoU."'";  
 			$preparado = $this->objbd->prepare($registro);
 			$resul = $preparado->execute();
 			return $resul;

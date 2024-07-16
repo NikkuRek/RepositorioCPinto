@@ -19,8 +19,8 @@
                     <input type="text" id="usuario" name="usuario" required>
                 </div>
                 <div class="form-grupo">
-                    <label for="clave">Clave:</label>
-                    <input type="password" id="clave" name="clave" required>
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="password" id="contraseña" name="contraseña" required>
                 </div>
                 <div class="boton">
                     <input type="submit" value="Iniciar Sesión" name="iniciar_sesion">

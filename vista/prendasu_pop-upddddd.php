@@ -1,30 +1,16 @@
+<!-- Pop-up -->
+<div class="add2">
+<input type="checkbox" id="btn-add2" class="Check">
+<div> 
+    <label for="btn-add2" class="btn btn-infox modal_abrir_agregar">
+        <img src="../vista/img/iconmas.png" alt="">
+        <div class="texto-contenedor-pagina">
+            <span class="texto-superior">Agregar Prenda Superior</span>                  
+        </div>
+    </label>
+</div>       
 
-<!DOCTYPE html> 
-<?php
-   require_once("../modelo/conexionPDO.php"); 
-?>
-<html>
-	<head>
-    <title>Lista de Pedidos</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="../vista/css/estilos.css">
-        <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-		<link rel="stylesheet" href="../vista/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../vista/css/sweetalert2.min.css">
-	</head>
-    <body>
-
-    <div class="barra-lateral">
-        <?php menuLateralOpcion(); ?>
-    </div>
-
-            <!-- Pop-up -->
-    <div class="add3">
-    <input type="checkbox" id="btn-add3" class="Check" checked>
-            
-
-    <div class="container-add2">
+<div class="container-add2">
     <div class="cont-add2">
         <div class="px-6 py-4">
             
@@ -103,10 +89,4 @@
         </div>
     </div>
 </div>
-    <!-- Pop-up -->
-        
-    <script type="text/javascript" src="../vista/js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="../vista/js/funciones1.js"></script>	
-    <script src="../vista/js/sweetalert2.min.js"></script>
-    </body>
-</html>
+<!-- Pop-up -->

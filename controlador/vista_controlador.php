@@ -18,7 +18,7 @@ if( !isset($_SESSION['id_usuario']) ){
         <li><img src="../vista/img/arrows-repeat.png" alt="pedido"><a href="../controlador/pedido_controlador.php"><b>Pedidos</b></a></li>
         <li><img src="../vista/img/box-open.png" alt="venta"><a href="../controlador/venta_controlador.php"><b>Ventas</b></a></li>
         <li><img src="../vista/img/usuarios-alt.png" alt="Clientes"><a href="../controlador/cliente_controlador.php"><b>Clientes</b></a></li>
-        <li><img src="../vista/img/box-open.png" alt="Productos"><a href="#"><b>Productos</b></a></li>
+        <!--<li><img src="../vista/img/box-open.png" alt="Productos"><a href="#"><b>Productos</b></a></li>-->
         <li><img src="../vista/img/box-open.png" alt="Productos"><a href="../controlador/elementos_controlador.php"><b>Elementos</b></a></li>
         <li><img src="../vista/img/documento.png" alt="Reportes"><a href="#"><b>Reportes</b></a></li>
         <li><img src="../vista/img/salir.png" alt="Volver"><a href="../vista/inicio.php?Volver"><b>Salir</b></a></li>

@@ -97,7 +97,8 @@
 			$preparado->bindParam(':obserpu', $this->obserpu);
 
 			$resul= $preparado->execute();
-			
+
+
 			if( $resul )
 				$res = 1;
 			else

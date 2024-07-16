@@ -40,16 +40,16 @@
                             <input type="text" id="idcostados" name="idcostados" value="<?php echo $idcostados; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
-                            <label for=area>Tipo de producto: </label>
-                            <input type="text" id="tipopi" name="tipopi" value="<?php echo $tipopi; ?>" class="form-control form-control-sm">
+                            <label for=area>Manga: </label>
+                            <input type="text" id="manga" name="manga" value="<?php echo $manga; ?>" class="form-control form-control-sm">
                         </div>
                         <div class="col-md-12">
-                            <label for=area>Protector: </label>
-                            <input type="text" id="protector" name="protector" value="<?php echo $protector; ?>" class="form-control form-control-sm">
-                        </div>
+                            <label for=area>Tipo de Prenda Superior: </label>
+                            <input type="text" id="tipops" name="tipops" value="<?php echo $tipops; ?>" class="form-control form-control-sm">
+                        </div>          
                         <div class="col-md-12">
-                            <label for=area>Tipo de Prenda Inferior: </label>
-                            <input type="text" id="tipopi" name="tipopi" value="<?php echo $tipopi; ?>" class="form-control form-control-sm">
+                            <label for=area>Tela de la Manga: </label>
+                            <input type="text" id="telaman" name="telaman" value="<?php echo $telaman; ?>" class="form-control form-control-sm">
                         </div>           
                         <div class="col-md-12">
                             <label for=area>Color: </label>
